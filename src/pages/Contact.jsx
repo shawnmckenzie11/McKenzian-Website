@@ -38,7 +38,7 @@ export const Contact = () => {
                 <li>
                   <Mail size={18} className="text-muted" />
                   <div>
-                    <strong>Email</strong>
+                    <strong>Email  </strong>
                     <a href="mailto:solutions@mckenzian.com" style={{ color: "var(--color-ink)", textDecoration: "none" }}>
                       solutions@mckenzian.com
                     </a>
@@ -47,27 +47,11 @@ export const Contact = () => {
                 <li>
                   <MapPin size={18} className="text-muted" />
                   <div>
-                    <strong>Location</strong>
+                    <strong>Location  </strong>
                     <span>Toronto, Ontario</span>
                   </div>
                 </li>
               </ul>
-
-              <div style={{ borderTop: "1px solid var(--color-rule)", paddingTop: "2.5rem" }}>
-                <h4 style={{ marginBottom: "1rem", fontFamily: "var(--font-headings)" }}>Instant Booking</h4>
-                <p className="contact-info-text" style={{ marginBottom: "1.5rem" }}>
-                  Skip the form and reserve a slot directly in our calendar for a 30-minute structured data strategy session.
-                </p>
-                <Button
-                  href="https://calendly.com/mckenzian-solutions/30min"
-                  variant="solid"
-                  external
-                  ariaLabel="Book a 30-min strategy call"
-                >
-                  <Calendar size={16} style={{ marginRight: "0.75rem" }} />
-                  Book 30-Min Strategy Call
-                </Button>
-              </div>
             </div>
 
             {/* Right Column: React State Form */}
