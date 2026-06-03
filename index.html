@@ -3,483 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McKenzian Solutions | Custom Data & Intelligent Software</title>
-    <meta name="description" content="Engineering advanced data pipelines, cognitive modeling, and custom AI-powered integrations.">
+    <title>McKenzian Solutions | Precision Analysis. Decisive Outcomes.</title>
+    <meta name="description" content="A consulting firm delivering high-trust data analysis and logistics solutions to clients across multiple industries.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
-    <style>
-        :root {
-            --bg-color: #0b0f19;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --primary: #6366f1; /* Indigo */
-            --primary-glow: rgba(99, 102, 241, 0.15);
-            --accent: #06b6d4; /* Cyan */
-            --accent-glow: rgba(6, 182, 212, 0.15);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --font-display: 'Outfit', sans-serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-        }
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mckenzian.com/">
+    <meta property="og:title" content="McKenzian Solutions | Precision Analysis. Decisive Outcomes.">
+    <meta property="og:description" content="A consulting firm delivering high-trust data analysis and logistics solutions across multiple industries.">
+    <meta property="og:image" content="/og-image.png">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.mckenzian.com/">
+    <meta property="twitter:title" content="McKenzian Solutions | Precision Analysis. Decisive Outcomes.">
+    <meta property="twitter:description" content="A consulting firm delivering high-trust data analysis and logistics solutions across multiple industries.">
+    <meta property="twitter:image" content="/og-image.png">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+    <!-- Global site tag (gtag.js) - Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        /* Radial Background Glows */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 50%;
-            height: 60%;
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
+      // Configure default measurement ID
+      gtag('config', 'G-XXXXXXXXXX', {
+        send_page_view: false // React Router will handle page views manually
+      });
+    </script>
 
-        body::after {
-            content: '';
-            position: absolute;
-            bottom: -10%;
-            right: -10%;
-            width: 50%;
-            height: 60%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
+    <!-- LD+JSON Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "GovernmentService",
+        "name": "McKenzian Solutions",
+        "alternateName": "McKenzian",
+        "url": "https://www.mckenzian.com",
+        "logo": "https://www.mckenzian.com/favicon.svg",
+        "description": "Consulting firm delivering precision data analysis and logistics solutions.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toronto",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "solutions@mckenzian.com"
         }
-
-        /* Header / Nav */
-        header {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--font-display);
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--text-main) 30%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--text-main);
-        }
-
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 5rem auto 7rem auto;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            animation: pulse 3s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 0.6; }
-        }
-
-        h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 70%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 3rem auto;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.85rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #ffffff;
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.45);
-            background: #4f46e5;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            border: 1px solid var(--card-border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Products & Services Grid */
-        .solutions {
-            max-width: 1200px;
-            margin: 0 auto 8rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(6, 182, 212, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            color: var(--accent);
-        }
-
-        .card-title {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .card-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .card-link:hover {
-            color: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--card-border);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Showcase Section */
-        .showcase {
-            max-width: 1200px;
-            margin: 0 auto 8rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .showcase-inner {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 4rem;
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .showcase-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .showcase-content h2 {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 1.5rem 0 1rem 0;
-        }
-
-        .showcase-content p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .showcase-image-container {
-            flex: 1.2;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.5s ease;
-        }
-
-        .showcase-image-container:hover {
-            transform: scale(1.02);
-        }
-
-        .showcase-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        @media (max-width: 968px) {
-            .showcase-inner {
-                flex-direction: column;
-                padding: 2.5rem;
-                gap: 2.5rem;
-            }
-            .showcase-image-container {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header, footer {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            nav a {
-                margin: 0 1rem;
-            }
-            .hero {
-                margin-top: 3rem;
-            }
-        }
-    </style>
+      }
+    </script>
 </head>
 <body>
+    <!-- Accessibility: Skip to main content link -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
 
-    <header>
-        <a href="#" class="logo">McKenzian Solutions</a>
-        <nav>
-            <a href="#solutions">Solutions</a>
-            <a href="mailto:contact@mckenzian.com">Contact</a>
-        </nav>
-    </header>
+    <div id="root"></div>
 
-    <main>
-        <section class="hero">
-            <span class="hero-badge">Innovative Engineering</span>
-            <h1>Data Engines &<br>Intelligent Interfaces</h1>
-            <p class="subtitle">We build automated scraping pipelines, cognitive state space analysis frameworks, and highly secure cloud integrations tailored for enterprise environments.</p>
-            <div class="cta-group">
-                <a href="#solutions" class="btn btn-primary">See Our Solutions</a>
-                <a href="mailto:contact@mckenzian.com" class="btn btn-secondary">Get in Touch</a>
-            </div>
-        </section>
-
-        <!-- Showcase Section -->
-        <section class="showcase">
-            <div class="showcase-inner">
-                <div class="showcase-content">
-                    <span class="hero-badge" style="background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.2); color: #22d3ee; margin-bottom: 1rem;">Live Application</span>
-                    <h2>Cannabis Research Catalog</h2>
-                    <p>Experience our custom scientific dashboard, featuring a dynamic pipeline that automatically scrapes, indexes, and extracts key study metrics. Filter search results instantly by THC/CBD concentrations, exposure methods, and methodological quality scores.</p>
-                    <a href="https://paperscraper.mckenzian.com/login" class="btn btn-primary" target="_blank">Sign In to Access</a>
-                </div>
-                <div class="showcase-image-container">
-                    <img src="images/dashboard_preview.png" alt="Cannabis Paper Intelligence Catalog Dashboard" class="showcase-img">
-                </div>
-            </div>
-        </section>
-
-        <section class="solutions" id="solutions">
-            <div class="section-header">
-                <h2 class="section-title">Core Capability Stack</h2>
-            </div>
-            <div class="grid">
-                
-                <!-- Cannabis Project Card -->
-                <div class="card">
-                    <div>
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                        </div>
-                        <h3 class="card-title">Cannabis Research Catalog</h3>
-                        <p class="card-desc">An automated, self-hosted web scraper and scoring platform. It continuously harvests, extracts key variables, and indexes peer-reviewed clinical publications.</p>
-                    </div>
-                    <a href="https://paperscraper.mckenzian.com/login" class="card-link" target="_blank">
-                        Sign In to Access 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </a>
-                </div>
-
-                <!-- Cognitive Vector Engine -->
-                <div class="card">
-                    <div>
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-                        </div>
-                        <h3 class="card-title">Cognitive Trajectory Modeling</h3>
-                        <p class="card-desc">Advanced psychological vector tracking that maps multi-dimensional emotional state spaces, identifying attractor states and boundary phase transitions.</p>
-                    </div>
-                    <span class="card-link" style="color: var(--text-muted); cursor: default;">Internal Solution</span>
-                </div>
-
-                <!-- Secure Cloud Tunnels -->
-                <div class="card">
-                    <div>
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        </div>
-                        <h3 class="card-title">Hybrid Secure Integration</h3>
-                        <p class="card-desc">Zero-trust network architecture using permanent cloud tunnels to safely host local SQLite database systems online without public exposure vulnerabilities.</p>
-                    </div>
-                    <span class="card-link" style="color: var(--text-muted); cursor: default;">Active Security</span>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 McKenzian Solutions. All rights reserved.</p>
-        <p>Built with speed & privacy.</p>
-    </footer>
-
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
