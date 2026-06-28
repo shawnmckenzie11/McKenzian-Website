@@ -23,7 +23,7 @@ export const caseStudies = [
   },
   {
     slug: "academic-research-database",
-    title: "McKenzian Research Catalog",
+    title: "Academic Research Catalog",
     client: "Biomedical Research Consortium",
     badge: "Research",
     category: "Research",
@@ -43,8 +43,8 @@ export const caseStudies = [
       "Gated every production push with blast-radius analysis and cohort validation to quantify field-level impact and routing changes before deployment.",
       "Delivered a faceted search dashboard enabling instantaneous filtering by exposure method, species, outcome domain, and 28+ structured extraction fields."
     ],
-    result: `The McKenzian Research Catalog is deployed in production on Fly.io, indexing 21,000+ PubMed papers. Eleven golden-endpoint calibration cycles completed with a 100% guard pass rate, achieving 90.0–100.0% batch alignment (mean 92.2%) against expert-validated holdouts. The flagship endpoint reached 100% alignment after three guard iterations, pushing 486 classification deltas with a +78 cohort routing improvement on a 1,420-paper validation pool. Researchers cut literature compilation cycles from 12 hours to under 90 minutes, and the platform was adopted across additional consortium laboratories within the same semester.`,
-    liveDemoUrl: "https://cannabis-paper-scraper.fly.dev",
+    result: `The Academic Research Catalog is deployed in production on Fly.io, indexing 21,000+ PubMed papers. Eleven golden-endpoint calibration cycles completed with a 100% guard pass rate, achieving 90.0–100.0% batch alignment (mean 92.2%) against expert-validated holdouts. The flagship endpoint reached 100% alignment after three guard iterations, pushing 486 classification deltas with a +78 cohort routing improvement on a 1,420-paper validation pool. Researchers cut literature compilation cycles from 12 hours to under 90 minutes, and the platform was adopted across additional consortium laboratories within the same semester.`,
+    liveDemoUrl: "https://paperscraper.mckenzian.com",
     reportUrl: "https://shawnmckenzie11.github.io/Cannabis-Paper-Scraper/reports/classification_pipeline_audit_report.html",
     techStack: ["Python", "Flask", "PostgreSQL", "Fly.io", "Anthropic Claude", "PubMed API", "FTS5/BM25"],
     heroImage: "/images/dashboard_preview.png"

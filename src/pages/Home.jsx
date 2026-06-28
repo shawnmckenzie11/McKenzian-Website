@@ -189,7 +189,7 @@ export const Home = () => {
             <div className="showcase-image-box">
               <img
                 src="/images/dashboard_preview.png"
-                alt="McKenzian Research Catalog dashboard preview"
+                alt="Academic Research Catalog dashboard preview"
                 width={1200}
                 height={675}
                 loading="lazy"
