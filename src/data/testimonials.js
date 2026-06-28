@@ -7,7 +7,7 @@ export const testimonials = [
   {
     quote: "The literature database they built for our lab is the kind of thing we'd have waited 18 months for from an internal IT team. They had a working prototype in two weeks.",
     author: "Research Lead",
-    organization: "Ontario Academic Consortium"
+    organization: "Biomedical Research Consortium"
   },
   {
     quote: "Their delivery tracker gave us visibility we simply didn't have before. Exception rates dropped 22% in the first quarter.",

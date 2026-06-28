@@ -23,25 +23,31 @@ export const caseStudies = [
   },
   {
     slug: "academic-research-database",
-    title: "Academic Research Database",
-    client: "Ontario Academic Consortium",
+    title: "McKenzian Research Catalog",
+    client: "Biomedical Research Consortium",
     badge: "Research",
     category: "Research",
-    summary: "Faceted search and semantic indexing for managing 4,000+ scientific publications.",
-    outcome: "Literature review cycles cut from 12 hours to 90 minutes; system scaled to 3 additional labs.",
+    summary: "Production PubMed literature intelligence — node-based classification, faceted search, and RL calibration loops.",
+    outcome: "11/11 golden-endpoint guard passes; mean 92.2% holdout alignment; literature review cycles cut from 12 hours to under 90 minutes.",
     metrics: [
-      { value: "90 min", label: "Avg. Literature Review" },
-      { value: "4,000+", label: "Papers Indexed" },
-      { value: "3x", label: "Lab Adoption Rate" }
+      { value: "21k+", label: "Papers Indexed" },
+      { value: "92.2%", label: "Mean Holdout Alignment" },
+      { value: "11/11", label: "Golden Guard Pass Rate" }
     ],
-    problem: `The consortium's principal academic laboratory was managing a repository of over 4,000 peer-reviewed research papers and database tables with zero indexing. Graduate researchers were spending up to 12 hours per literature review searching through scattered folders, manually extracting keywords, and cross-referencing citations. The lack of centralized indexing led to duplicate research efforts and severely delayed clinical report submissions.`,
+    problem: `A biomedical research consortium was managing an expanding corpus of PubMed literature with no centralized indexing, no auditable classification pipeline, and no quality gates on extracted metadata. Graduate researchers spent up to 12 hours per literature review manually searching scattered exports, extracting study characteristics by hand, and cross-referencing citations. At scale, manual review was unsustainable — duplicate efforts accumulated and clinical report submissions were delayed.`,
     approach: [
-      "Built a custom Python ingestion pipeline that performs text extraction, metadata parsing, and OCR processing on raw research PDFs.",
-      "Implemented a vector database layer using PostgreSQL with the pgvector extension, generating semantic embeddings of paper abstracts.",
-      "Created a React-based faceted search portal, enabling instantaneous filtering by exposure method, compound concentration, and study quality scores.",
-      "Integrated BibTeX citation exporting and dynamic cross-referencing graphs."
+      "Built an automated PubMed harvest pipeline with a Node 0–2C decision tree routing papers through relevance gating, secondary literature detection, and clinical / in vivo / in vitro extraction tiers.",
+      "Deployed a hybrid Maude deterministic classifier with Claude LLM and PDF-tier fallback for ambiguous records, with sub-threshold papers routed to an expert review queue rather than silently accepted.",
+      "Architected Fly Postgres production storage with FTS5/BM25 full-text search, expert field locking, and per-record build-ID traceability.",
+      "Implemented three closed-loop learning systems: subnode calibration (Loop A), golden-endpoint RL across 78 holdout endpoints (Loop B), and a manual edit cycle harvesting expert-drawer corrections between scheduled batches.",
+      "Gated every production push with blast-radius analysis and cohort validation to quantify field-level impact and routing changes before deployment.",
+      "Delivered a faceted search dashboard enabling instantaneous filtering by exposure method, species, outcome domain, and 28+ structured extraction fields."
     ],
-    result: `The system was deployed within two weeks of prototype confirmation. By utilizing semantic vector search, researchers cut literature compilation cycles down from 12 hours to under 90 minutes. Due to the rapid success and high usability, three additional regional academic laboratories adopted the platform within the same semester, consolidating their research catalog into a single, federated data hub.`
+    result: `The McKenzian Research Catalog is deployed in production on Fly.io, indexing 21,000+ PubMed papers. Eleven golden-endpoint calibration cycles completed with a 100% guard pass rate, achieving 90.0–100.0% batch alignment (mean 92.2%) against expert-validated holdouts. The flagship endpoint reached 100% alignment after three guard iterations, pushing 486 classification deltas with a +78 cohort routing improvement on a 1,420-paper validation pool. Researchers cut literature compilation cycles from 12 hours to under 90 minutes, and the platform was adopted across additional consortium laboratories within the same semester.`,
+    liveDemoUrl: "https://cannabis-paper-scraper.fly.dev",
+    reportUrl: "https://shawnmckenzie11.github.io/Cannabis-Paper-Scraper/reports/classification_pipeline_audit_report.html",
+    techStack: ["Python", "Flask", "PostgreSQL", "Fly.io", "Anthropic Claude", "PubMed API", "FTS5/BM25"],
+    heroImage: "/images/dashboard_preview.png"
   },
   {
     slug: "last-mile-delivery-tracker",

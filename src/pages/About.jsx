@@ -42,7 +42,7 @@ export const About = () => {
               <h3>Gordon McKenzie</h3>
               <span className="founder-title">Principal & Founder</span>
               <p className="founder-bio">
-                Gordon brings over 15 years of cross-domain expertise engineering data pipelines and modeling complex distribution systems. Committed to analytical rigor and client-first engineering, he ensures every project directly resolves critical bottlenecks. He works alongside clients from scoping to final delivery to align technology with strategic outcomes.
+                Shawn brings over 15 years of cross-domain expertise engineering data pipelines and modeling complex distribution systems. Committed to analytical rigor and client-first engineering, he ensures every project directly resolves critical bottlenecks. He works alongside clients from scoping to final delivery to align technology with strategic outcomes.
               </p>
             </div>
           </div>

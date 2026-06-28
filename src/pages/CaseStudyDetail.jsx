@@ -40,6 +40,21 @@ export const CaseStudyDetail = () => {
           <h1 id="case-study-title" className="case-study-hero-title">{study.title}</h1>
           <p className="case-study-hero-outcome">Outcome: {study.outcome}</p>
 
+          {(study.liveDemoUrl || study.reportUrl) && (
+            <div className="case-study-action-row">
+              {study.liveDemoUrl && (
+                <Button href={study.liveDemoUrl} variant="solid" external ariaLabel="View live demo">
+                  View Live Demo
+                </Button>
+              )}
+              {study.reportUrl && (
+                <Button href={study.reportUrl} variant="ghost" external ariaLabel="Read pipeline audit report">
+                  Read Pipeline Audit
+                </Button>
+              )}
+            </div>
+          )}
+
           <div className="case-study-meta-strip">
             <div className="case-study-meta-item">
               <span className="case-study-meta-label">Client</span>
@@ -50,6 +65,19 @@ export const CaseStudyDetail = () => {
               <span className="case-study-meta-value">{study.badge}</span>
             </div>
           </div>
+
+          {study.heroImage && (
+            <div className="case-study-hero-image-wrap">
+              <img
+                src={study.heroImage}
+                alt={`${study.title} dashboard preview`}
+                className="case-study-hero-image"
+                width={1200}
+                height={675}
+                loading="lazy"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -80,6 +108,17 @@ export const CaseStudyDetail = () => {
                 <h2 id="result-heading">The Result</h2>
                 <p>{study.result}</p>
               </section>
+
+              {study.techStack && study.techStack.length > 0 && (
+                <section aria-labelledby="tech-stack-heading">
+                  <h2 id="tech-stack-heading">Technology</h2>
+                  <div className="tech-tag-list">
+                    {study.techStack.map((tag) => (
+                      <span key={tag} className="tech-tag">{tag}</span>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Inline CTA */}
               <div style={{ backgroundColor: "var(--color-surface)", padding: "3rem", border: "1px solid var(--color-rule)", marginTop: "4rem" }}>

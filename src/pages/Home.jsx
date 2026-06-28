@@ -33,7 +33,7 @@ export const Home = () => {
 
   // Find the featured case study
   const featuredCaseStudy = caseStudies.find(
-    (cs) => cs.slug === "rental-market-dashboard"
+    (cs) => cs.slug === "academic-research-database"
   ) || caseStudies[0];
 
   return (
@@ -187,7 +187,13 @@ export const Home = () => {
 
           <div className="showcase-container reveal-element">
             <div className="showcase-image-box">
-              <img src="/images/dashboard_preview.png" alt="Cannabis Paper Intelligence Catalog Dashboard" />
+              <img
+                src="/images/dashboard_preview.png"
+                alt="McKenzian Research Catalog dashboard preview"
+                width={1200}
+                height={675}
+                loading="lazy"
+              />
             </div>
             <div className="showcase-text-box">
               <span className="showcase-tag">{featuredCaseStudy.badge}</span>
