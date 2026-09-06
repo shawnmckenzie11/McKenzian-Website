@@ -84,10 +84,10 @@ export const HeroAnimation = () => {
     }
 
     /**
-     * One static frame for reduced-motion preference.
+     * One static frame for reduced-motion preference (black bg, white nodes).
      */
     const drawStatic = () => {
-      const { bg, node, line } = paletteForPhase(0.5);
+      const { bg, node, line } = paletteForPhase(0);
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, width, height);
       particles.forEach((p) => {
@@ -135,7 +135,7 @@ export const HeroAnimation = () => {
      */
     const animate = (now) => {
       const elapsed = (now - startTime) * 0.00012;
-      const phase = (Math.sin(elapsed) + 1) / 2;
+      const phase = (Math.sin(elapsed - Math.PI / 2) + 1) / 2;
       const { bg, node, line, mouseLine } = paletteForPhase(phase);
 
       ctx.fillStyle = bg;
