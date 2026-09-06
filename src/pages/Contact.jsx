@@ -1,67 +1,39 @@
 import React from "react";
-import { Mail, MapPin, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useDocumentMetadata } from "../hooks/useDocumentMetadata";
+import { HeroAnimation } from "../components/HeroAnimation";
 import { ContactForm } from "../components/ContactForm";
-import { Button } from "../components/Button";
+import { MARKETING } from "../config/marketing";
 
+/**
+ * Minimalist contact view: animation, mailto control, then the inquiry form card.
+ */
 export const Contact = () => {
   useDocumentMetadata(
-    "Contact Us",
-    "Submit an inquiry or schedule a strategy call to discuss your data analysis or logistics requirements."
+    "Contact",
+    "Email McKenzian or submit a project inquiry."
   );
 
   return (
-    <main id="main-content">
-      {/* Intro Header */}
-      <section className="page-intro-header" aria-labelledby="contact-title">
-        <div className="container">
-          <span className="hero-subtitle">Engage Us</span>
-          <h1 id="contact-title" className="page-intro-title">Get in Touch</h1>
-          <p className="page-intro-lead">
-            Select a pathway to discuss your data analysis or logistics operations. Book a scheduled calendar slot below or submit an inquiry using our secure form.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Section */}
-      <section className="section-padding">
-        <div className="container">
-          <div className="contact-layout">
-            {/* Left Column: Info & Calendly CTA */}
-            <div className="contact-info-col reveal-element">
-              <h3>Office & Scheduling</h3>
-              <p className="contact-info-text">
-                We work with clients across North America. Initial conversations are typically held over secure video links or telephone.
-              </p>
-
-              <ul className="contact-details-list">
-                <li>
-                  <Mail size={18} className="text-muted" />
-                  <div>
-                    <strong>Email  </strong>
-                    <a href="mailto:solutions@mckenzian.com" style={{ color: "var(--color-ink)", textDecoration: "none" }}>
-                      solutions@mckenzian.com
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <MapPin size={18} className="text-muted" />
-                  <div>
-                    <strong>Location  </strong>
-                    <span>Toronto, Ontario</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right Column: React State Form */}
-            <div className="reveal-element">
-              <h3 style={{ marginBottom: "2rem" }}>Submit Project Details</h3>
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
+    <main id="main-content" className="linktree-page linktree-page--contact">
+      <HeroAnimation />
+      <div className="linktree-stack contact-stack">
+        <Link to="/" className="linktree-home">
+          Home
+        </Link>
+        <a
+          className="linktree-contact"
+          href={`mailto:${MARKETING.contactEmail}`}
+        >
+          Email
+        </a>
+        <section className="contact-form-card" aria-labelledby="contact-form-title">
+          <h1 id="contact-form-title" className="contact-form-card-title">
+            Submit Project Details
+          </h1>
+          <ContactForm />
+        </section>
+      </div>
     </main>
   );
 };

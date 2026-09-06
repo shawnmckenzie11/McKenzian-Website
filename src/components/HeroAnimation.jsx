@@ -1,13 +1,42 @@
 import React, { useRef, useEffect } from "react";
 
+/**
+ * Linearly interpolates between two numbers.
+ * @param {number} a
+ * @param {number} b
+ * @param {number} t - 0..1
+ * @returns {number}
+ */
+function mix(a, b, t) {
+  return a + (b - a) * t;
+}
+
+/**
+ * Returns background and foreground RGBA strings for the current oscillation phase.
+ * Background sweeps black → white; foreground is the inverse so nodes/lines stay visible.
+ * @param {number} phase - 0 (black bg) .. 1 (white bg)
+ * @returns {{ bg: string, node: string, line: string, mouseLine: string }}
+ */
+function paletteForPhase(phase) {
+  const bgVal = Math.round(mix(0, 255, phase));
+  const fgVal = 255 - bgVal;
+  return {
+    bg: `rgb(${bgVal}, ${bgVal}, ${bgVal})`,
+    node: `rgba(${fgVal}, ${fgVal}, ${fgVal}, 0.62)`,
+    line: `rgba(${fgVal}, ${fgVal}, ${fgVal}, 0.38)`,
+    mouseLine: `rgba(${fgVal}, ${fgVal}, ${fgVal}, 0.5)`,
+  };
+}
+
+/**
+ * Full-viewport particle network: bg and foreground sweep black ↔ white in sync.
+ * Connection lines use flat opacity (no distance falloff).
+ */
 export const HeroAnimation = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    // Check for prefers-reduced-motion
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -15,12 +44,15 @@ export const HeroAnimation = () => {
     let animationFrameId;
     let width = (canvas.width = canvas.offsetWidth);
     let height = (canvas.height = canvas.offsetHeight);
+    const startTime = performance.now();
 
     const particles = [];
     const particleCount = 80;
     const connectionDistance = 100;
 
-    // Handle Resize
+    /**
+     * Resizes the canvas backing store to match layout pixels.
+     */
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = canvas.offsetWidth;
@@ -28,7 +60,6 @@ export const HeroAnimation = () => {
     };
     window.addEventListener("resize", handleResize);
 
-    // Track mouse coordinates
     let mouse = { x: null, y: null };
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -42,7 +73,6 @@ export const HeroAnimation = () => {
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
 
-    // Initialize Particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
@@ -53,26 +83,76 @@ export const HeroAnimation = () => {
       });
     }
 
-    // Animation Loop
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
+    /**
+     * One static frame for reduced-motion preference.
+     */
+    const drawStatic = () => {
+      const { bg, node, line } = paletteForPhase(0.5);
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, width, height);
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = node;
+        ctx.fill();
+      });
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < connectionDistance) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = line;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+    };
 
-      // Draw and update particles
+    if (mediaQuery.matches) {
+      const onStaticResize = () => {
+        handleResize();
+        drawStatic();
+      };
+      drawStatic();
+      window.addEventListener("resize", onStaticResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        window.removeEventListener("resize", onStaticResize);
+        window.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseleave", handleMouseLeave);
+      };
+    }
+
+    /**
+     * Animation loop: temporal bg/fg gradient, flat-opacity edges.
+     */
+    const animate = (now) => {
+      const elapsed = (now - startTime) * 0.00012;
+      const phase = (Math.sin(elapsed) + 1) / 2;
+      const { bg, node, line, mouseLine } = paletteForPhase(phase);
+
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, width, height);
+
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-
-        // Bounce off walls
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(26, 79, 191, 0.4)"; // cobalt alpha
+        ctx.fillStyle = node;
         ctx.fill();
       });
 
-      // Draw lines between close particles
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
         for (let j = i + 1; j < particles.length; j++) {
@@ -82,29 +162,26 @@ export const HeroAnimation = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.25;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(26, 79, 191, ${alpha})`;
+            ctx.strokeStyle = line;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
 
-        // Draw line to mouse if close
         if (mouse.x !== null && mouse.y !== null) {
           const dx = p1.x - mouse.x;
           const dy = p1.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance + 50) {
-            const alpha = (1 - dist / (connectionDistance + 50)) * 0.4;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(184, 150, 12, ${alpha})`; // gold alpha
-            ctx.lineWidth = 1.2;
+            ctx.strokeStyle = mouseLine;
+            ctx.lineWidth = 1;
             ctx.stroke();
           }
         }
@@ -113,7 +190,7 @@ export const HeroAnimation = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       cancelAnimationFrame(animationFrameId);

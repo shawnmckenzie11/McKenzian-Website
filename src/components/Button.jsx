@@ -11,6 +11,7 @@ export const Button = ({
   ariaLabel,
   className = "",
   external = false,
+  disabled = false,
 }) => {
   const getUTMLink = (url) => {
     try {
@@ -63,6 +64,7 @@ export const Button = ({
       className={btnClass}
       onClick={onClick}
       aria-label={ariaLabel}
+      disabled={disabled}
     >
       {children}
     </button>

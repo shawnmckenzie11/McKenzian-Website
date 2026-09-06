@@ -14,17 +14,17 @@ Build the full McKenzian Solutions marketing website per project settings. Below
 - Scroll indicator: pulsing chevron-down.
 
 **Capabilities ticker** — full-width `--color-ink` background, white text, slow auto-scrolling marquee (pauses on hover):
-`Research Databases · Biostatistics Processing · Rental Market Dashboards · Housing Analytics · Delivery Tracking · Custom Data Pipelines · Quantitative Research · Logistics Intelligence`
+`Research Databases · Biostatistics Processing · Literature Catalogs · Faceted Search · Delivery Operations · Custom Data Pipelines · Quantitative Research · Offline-First PWAs`
 
 **Services cards** — two or three cards (white bg, 1px `--color-rule` border, sharp corners). Hover: border transitions to `--color-accent`. Cards: Data Analysis, Logistics, (optional) Custom Research.
 
-**Trust band** — warm `--color-surface` bg. Four metric cards: `12+ Domains served` · `40+ Databases deployed` · `100% Client satisfaction` · `5 Avg. hours to first deliverable`. Below: two pull-quote testimonials (Playfair italic 22px, attribution in DM Sans below).
+**Trust band** — warm `--color-surface` bg. Four metric cards from shipped work: `21k+ Papers indexed` · `25→5 hrs Courier data entry` · `~$2k/yr Paper forms eliminated` · `12h→90m Literature review cycle`. No attributed placeholder quotes.
 
 **Featured case study** — alternating image/text layout. One case study: name, two-sentence problem, bolded result metric, `Read Full Case Study →`.
 
 **Pre-footer CTA** — `--color-ink` background. Centered Playfair 48px white heading: *"Ready to bring clarity to your data?"* Single CTA button. Micro-copy: *"No commitment. No pitch. Just a focused conversation about your problem."*
 
-**Footer** — four columns: wordmark + tagline | service links | company links | contact. Bottom bar: copyright · Privacy · Terms. LinkedIn icon (SVG, no emoji).
+**Footer** — four columns: wordmark + tagline | service links | company links | contact. Bottom bar: copyright · Privacy · Terms. No placeholder social links.
 
 ---
 
@@ -37,7 +37,7 @@ Intro paragraph + two cards linking to detail pages. Each card: title, icon, 3-b
 ### Data Analysis (`/services/data-analysis`)
 
 1. Hero: *"From raw data to decisions"*
-2. What we build — icon grid: research databases · biostatistics pipelines · housing/rental dashboards · custom analytics APIs
+2. What we build — icon grid: research databases · biostatistics pipelines · faceted search dashboards · custom analytics APIs
 3. How we work — 4-step horizontal process diagram: `Discover → Architect → Build → Deliver`
 4. Inline mini case study card (Case Study 2 — Academic Research Database)
 5. CTA: Book a call
@@ -47,7 +47,7 @@ Intro paragraph + two cards linking to detail pages. Each card: title, icon, 3-b
 ### Logistics (`/services/logistics`)
 
 1. Hero: *"Every shipment, accounted for."*
-2. What we build: delivery tracking dashboards · route optimization · fleet analytics · SLA alerting
+2. What we build: driver/dispatcher portals · digital waybills & POD · offline-first sync · route pricing & accounting
 3. How we work — same 4-step diagram
 4. Inline mini case study card (Case Study 3 — Last-Mile Delivery Tracker)
 5. CTA
@@ -56,7 +56,7 @@ Intro paragraph + two cards linking to detail pages. Each card: title, icon, 3-b
 
 ### Work (`/work`)
 
-Filterable card grid. Filter tabs: `All · Data Analysis · Logistics · Research`. Each card: project name, client type, domain badge (cobalt pill), two-sentence problem, bolded result metric, `Read case study →`. On hover: card reveals result metric with smooth CSS transition.
+Filterable card grid. Filter tabs: `All · Research · Logistics`. Each card: thumbnail, project name, client, domain badge, summary, key outcome, `Read case study →`.
 
 **Case study detail** (`/work/[slug]`):
 - Hero: project name + one-line outcome
@@ -65,13 +65,13 @@ Filterable card grid. Filter tabs: `All · Data Analysis · Logistics · Researc
 - Section: The Result (large-type metric callouts + narrative)
 - Inline CTA: *"Working on something similar? Let's talk."*
 
-Include all three placeholder case studies with realistic consulting copy drawn from project settings.
+Include the two shipped case studies (Academic Research Catalog, Last-Mile Delivery Tracker) with accurate product copy. Do not include the rental dashboard.
 
 ---
 
 ### About (`/about`)
 
-1. Founder block: circle avatar placeholder, name, 3-sentence bio (cross-domain expertise, analytical rigor, client-first)
+1. Founder block: initials avatar, **Shawn McKenzie**, 3-sentence bio (cross-domain expertise, analytical rigor, client-first)
 2. Philosophy — 3 principles with icon + heading + 2-sentence explanation: *Precision over speed* · *Systems thinking* · *Client as partner*
 3. Capabilities tag list (two columns): Python · R · SQL · PostgreSQL · PostGIS · React · D3.js · Node.js · dbt · pgvector · Leaflet · Tailwind
 4. CTA

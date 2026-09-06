@@ -4,9 +4,9 @@
 
 **Company:** McKenzian Solutions  
 **Tagline:** Precision analysis. Decisive outcomes.  
-**Services:** Data analysis (research databases, biostatistics, housing/rental dashboards) and logistics (delivery tracking, route analytics).  
+**Services:** Data analysis (research databases, biostatistics, faceted literature catalogs) and logistics (offline-first courier ops portals).  
 **Tone:** Confident, rigorous, direct. Never corporate-fluffy. Minimal adjective overload.  
-**Aesthetic:** Refined minimalism with editorial gravitas.
+**Aesthetic:** Refined minimalism with editorial gravitas. Modest 8–12px radius on cards and screenshots; tighter corners on buttons.
 
 ## Color system
 
@@ -39,11 +39,10 @@
 
 ```
 /src
-  /components     Nav, Footer, Button, CaseStudyCard, MetricCard, ServiceCard,
-                  ContactForm, CapabilitiesTicker, HeroAnimation
+  /components     Nav, Footer, Button, SnapshotGallery, ContactForm, CapabilitiesTicker, HeroAnimation
   /pages          Home, Services, DataAnalysis, Logistics, Work, CaseStudy,
-                  About, Contact
-  /data           caseStudies.js  services.js  testimonials.js
+                  About, Contact, Privacy, Terms
+  /data           caseStudies.js  services.js
   /styles         globals.css
   App.jsx  main.jsx
 /public
@@ -62,13 +61,15 @@ index.html  vite.config.js  package.json
 /work/[slug]            Case study detail (dynamic)
 /about                  About
 /contact                Contact + booking
+/privacy                Privacy policy
+/terms                  Terms of use
 ```
 
 ## Global standards (apply to every page)
 
 - Sticky nav: transparent → white on scroll past 80px, 1px bottom border
 - Nav CTA (`Book a Call`) always visible: pinned in nav desktop, sticky bottom bar mobile
-- Sharp corners on all buttons (no border-radius) — signals precision
+- Modest radius (`--radius-card` 12px) on cards, images, and snapshot frames; buttons stay tighter (4px)
 - `prefers-reduced-motion`: disable all animations
 - Semantic HTML: `<header>` `<nav>` `<main>` `<section>` `<article>` `<footer>`
 - Single `<h1>` per page, logical heading hierarchy
@@ -77,22 +78,10 @@ index.html  vite.config.js  package.json
 - All forms: associated `<label>`, no HTML `<form>` tag — use React state + fetch
 - GA4 gtag.js snippet in `index.html`
 
-## Placeholder content
+## Shipped case studies (problem → approach → result)
 
-**Testimonials:**
-> "McKenzian rebuilt our property data pipeline from scratch. We went from weekly spreadsheet exports to a live dashboard we check every morning."  
-> — Director of Operations, GTA Property Management Group
+Do not invent client quotes. Home proof metrics must come from these two products.
 
-> "The literature database they built for our lab is the kind of thing we'd have waited 18 months for from an internal IT team. They had a working prototype in two weeks."  
-> — Research Lead, Ontario Academic Consortium
+1. **Academic Research Catalog** — Production PubMed literature catalog with structured classification, faceted search, and calibration loops. 21k+ papers indexed; mean 92.2% holdout alignment; review cycles 12 hours → under 90 minutes. Public chrome: “Academic Research Catalog” only.
 
-> "Their delivery tracker gave us visibility we simply didn't have before. Exception rates dropped 22% in the first quarter."  
-> — VP Logistics, Regional Distribution Operator
-
-**Case studies (problem → approach → result):**
-
-1. **Rental Market Dashboard** — Client needed real-time rental price trends across Hamilton. Built a PostGIS + PostgreSQL backend scraping 4 listing sources, with a React + D3.js choropleth dashboard. Result: 85% reduction in market research time; adopted as primary underwriting tool.
-
-2. **Academic Research Database** — University lab managing 4,000+ papers with no cross-referencing. Built a Python ingestion pipeline (PDF parsing, pgvector semantic search) with a React faceted-search front-end and BibTeX export. Result: Literature review time cut from 12 hours to 90 minutes; adopted across 3 additional labs.
-
-3. **Last-Mile Delivery Tracker** — Distributor losing visibility on 15–20% of deliveries post-handoff. Integrated 3 courier APIs, built a Node.js aggregation layer and real-time React dashboard with SMS/email alerting. Result: Exception visibility 30% → 97%; delivery-related complaints down 41%.
+2. **Last-Mile Delivery Tracker (IAW-SAAS)** — Contract build for IAW Courier (Greater Sudbury / Northern Ontario). Offline-first React PWA: digital waybills, historical pickup chips, route-based pricing, POD signatures, dispatcher accounting. Result: ~$2,000/yr materials saved; data entry 25 → 5 hours/month. Snapshots from seeded synthetic data only — never live customer records.
