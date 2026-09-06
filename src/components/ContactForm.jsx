@@ -145,7 +145,6 @@ export const ContactForm = ({ defaultLane = "" }) => {
           <input
             id="name"
             type="text"
-            placeholder="Your full name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -157,7 +156,6 @@ export const ContactForm = ({ defaultLane = "" }) => {
           <input
             id="organization"
             type="text"
-            placeholder="Company or organization"
             value={formData.organization}
             onChange={handleChange}
             disabled={loading}
@@ -171,7 +169,6 @@ export const ContactForm = ({ defaultLane = "" }) => {
           <input
             id="email"
             type="email"
-            placeholder="you@company.com"
             value={formData.email}
             onChange={handleChange}
             required
