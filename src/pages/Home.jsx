@@ -9,7 +9,7 @@ const CARD_THUMB_WIDTH = 100;
 const CARD_THUMB_HEIGHT = Math.round(CARD_THUMB_WIDTH * (698 / 460));
 
 /**
- * Full-viewport link tree: brand, tool thumbnails with More links, Contact below.
+ * Full-viewport link tree: thumbnail opens More page; More opens live tool.
  */
 export const Home = () => {
   useDocumentMetadata(
@@ -25,8 +25,10 @@ export const Home = () => {
         <div className="linktree-row">
           {tools.map((tool) => (
             <div key={tool.id} className="linktree-item">
-              <div
+              <Link
+                to={`/more/${tool.id}`}
                 className={`linktree-card${tool.cardClass ? ` ${tool.cardClass}` : ""}`}
+                aria-label={`More about ${tool.title}`}
                 style={{
                   "--card-w": tool.nativeWidth,
                   "--card-h": tool.nativeHeight,
@@ -38,14 +40,16 @@ export const Home = () => {
                   width={CARD_THUMB_WIDTH}
                   height={CARD_THUMB_HEIGHT}
                 />
-              </div>
-              <Link
-                to={`/more/${tool.id}`}
+              </Link>
+              <a
                 className="linktree-more"
-                aria-label={`More about ${tool.title}`}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${tool.title}`}
               >
                 More
-              </Link>
+              </a>
             </div>
           ))}
         </div>

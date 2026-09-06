@@ -2173,11 +2173,19 @@ footer.main-footer {
   z-index: 1;
   flex: 0 0 auto;
   width: max-content;
+  display: block;
+  text-decoration: none;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(226, 223, 218, 0.95);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(15, 15, 15, 0.04);
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.linktree-card:hover {
+  border-color: rgba(26, 79, 191, 0.28);
+  box-shadow: 0 8px 22px rgba(15, 15, 15, 0.06);
 }
 
 .linktree-card img {
@@ -2360,6 +2368,39 @@ footer.main-footer {
 
 .more-live-link a:hover {
   text-decoration: underline;
+}
+
+.more-screenshots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.more-screenshot {
+  margin: 0;
+}
+
+.more-screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface);
+}
+
+.more-screenshot figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+@media (max-width: 640px) {
+  .more-screenshots {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact-form-card {

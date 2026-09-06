@@ -5,7 +5,7 @@ import { HeroAnimation } from "../components/HeroAnimation";
 import { getToolSummary } from "../data/toolSummaries";
 
 /**
- * Tool explainer page: Back, scrollable summary card, Contact.
+ * Tool explainer page: Back, scrollable summary card with screenshots, Contact.
  */
 export const ToolMore = () => {
   const { id } = useParams();
@@ -33,6 +33,15 @@ export const ToolMore = () => {
             {summary.title}
           </h1>
           <p className="more-card-lead">{summary.summary}</p>
+
+          <div className="more-screenshots">
+            {summary.screenshots.map((shot) => (
+              <figure key={shot.src} className="more-screenshot">
+                <img src={shot.src} alt={shot.alt} loading="lazy" />
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
 
           <section className="more-section">
             <h2>Problem</h2>
