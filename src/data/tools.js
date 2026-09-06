@@ -8,8 +8,8 @@ export const tools = [
     title: "Academic Research",
     url: "https://paperscraper.mckenzian.com",
     image: "/images/home/catalog.png",
-    nativeWidth: 584,
-    nativeHeight: 1024,
+    nativeWidth: 460,
+    nativeHeight: 698,
     cardClass: "linktree-card--dark",
   },
   {

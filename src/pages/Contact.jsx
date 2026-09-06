@@ -6,7 +6,7 @@ import { ContactForm } from "../components/ContactForm";
 import { MARKETING } from "../config/marketing";
 
 /**
- * Minimalist contact view: animation, mailto control, then the inquiry form card.
+ * Minimalist contact view: Email, OR divider, and inquiry form card.
  */
 export const Contact = () => {
   useDocumentMetadata(
@@ -21,18 +21,23 @@ export const Contact = () => {
         <Link to="/" className="linktree-home">
           Home
         </Link>
-        <a
-          className="linktree-contact"
-          href={`mailto:${MARKETING.contactEmail}`}
-        >
-          Email
-        </a>
-        <section className="contact-form-card" aria-labelledby="contact-form-title">
-          <h1 id="contact-form-title" className="contact-form-card-title">
-            Submit Project Details
-          </h1>
-          <ContactForm />
-        </section>
+        <div className="contact-flow">
+          <a
+            className="linktree-contact"
+            href={`mailto:${MARKETING.contactEmail}`}
+          >
+            Email
+          </a>
+          <span className="contact-or" aria-hidden="true">
+            OR
+          </span>
+          <section className="contact-form-card" aria-labelledby="contact-form-title">
+            <h1 id="contact-form-title" className="contact-form-card-title">
+              Submit Project Details
+            </h1>
+            <ContactForm />
+          </section>
+        </div>
       </div>
     </main>
   );

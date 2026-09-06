@@ -4,11 +4,12 @@ import { useDocumentMetadata } from "../hooks/useDocumentMetadata";
 import { HeroAnimation } from "../components/HeroAnimation";
 import { tools } from "../data/tools";
 
-/** Display width for full-screenshot thumbnails (height follows aspect ratio). */
+/** Display width for screenshot thumbnails; height matches delivery aspect ratio. */
 const CARD_THUMB_WIDTH = 100;
+const CARD_THUMB_HEIGHT = Math.round(CARD_THUMB_WIDTH * (698 / 460));
 
 /**
- * Full-viewport link tree: small screenshot thumbnails and Contact, centered.
+ * Full-viewport link tree: brand, tool thumbnails with More links, Contact below.
  */
 export const Home = () => {
   useDocumentMetadata(
@@ -20,28 +21,34 @@ export const Home = () => {
     <main id="main-content" className="linktree-page">
       <HeroAnimation />
       <div className="linktree-cluster">
-        {tools.map((tool) => (
-          <a
-            key={tool.id}
-            className={`linktree-card${tool.cardClass ? ` ${tool.cardClass}` : ""}`}
-            href={tool.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${tool.title}`}
-            style={{
-              "--card-w": tool.nativeWidth,
-              "--card-h": tool.nativeHeight,
-            }}
-          >
-            <img
-              src={tool.image}
-              alt=""
-              width={CARD_THUMB_WIDTH}
-              height={Math.round(CARD_THUMB_WIDTH * (tool.nativeHeight / tool.nativeWidth))}
-            />
-            <span>{tool.title}</span>
-          </a>
-        ))}
+        <span className="linktree-brand">McKenzian Solutions</span>
+        <div className="linktree-row">
+          {tools.map((tool) => (
+            <div key={tool.id} className="linktree-item">
+              <div
+                className={`linktree-card${tool.cardClass ? ` ${tool.cardClass}` : ""}`}
+                style={{
+                  "--card-w": tool.nativeWidth,
+                  "--card-h": tool.nativeHeight,
+                }}
+              >
+                <img
+                  src={tool.image}
+                  alt=""
+                  width={CARD_THUMB_WIDTH}
+                  height={CARD_THUMB_HEIGHT}
+                />
+              </div>
+              <Link
+                to={`/more/${tool.id}`}
+                className="linktree-more"
+                aria-label={`More about ${tool.title}`}
+              >
+                More
+              </Link>
+            </div>
+          ))}
+        </div>
         <Link to="/contact" className="linktree-contact">
           Contact
         </Link>

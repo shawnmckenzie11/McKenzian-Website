@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { HashRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
+import { ToolMore } from "./pages/ToolMore";
 import { MARKETING } from "./config/marketing";
 
 import "./styles/globals.css";
@@ -40,6 +41,7 @@ const AppChrome = () => {
     <div className="shell-home">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/more/:id" element={<ToolMore />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
