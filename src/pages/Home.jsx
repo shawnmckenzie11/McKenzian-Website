@@ -53,8 +53,8 @@ export const Home = () => {
             </div>
           ))}
         </div>
-        <Link to="/contact" className="linktree-contact">
-          Contact
+        <Link to="/contact" className="linktree-contact linktree-cta">
+          Get Started
         </Link>
       </div>
     </main>

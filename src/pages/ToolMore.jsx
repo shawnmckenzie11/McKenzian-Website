@@ -5,7 +5,7 @@ import { HeroAnimation } from "../components/HeroAnimation";
 import { getToolSummary } from "../data/toolSummaries";
 
 /**
- * Tool explainer page: Back, scrollable summary card with screenshots, Contact.
+ * Tool explainer page: Back, scrollable summary card with screenshots, Get Started.
  */
 export const ToolMore = () => {
   const { id } = useParams();
@@ -69,8 +69,8 @@ export const ToolMore = () => {
           </p>
         </article>
 
-        <Link to="/contact" className="linktree-contact">
-          Contact
+        <Link to="/contact" className="linktree-contact linktree-cta">
+          Get Started
         </Link>
       </div>
     </main>

@@ -2105,7 +2105,7 @@ footer.main-footer {
 }
 
 .linktree-page--contact .linktree-stack {
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-height: 100%;
   padding-top: 3.5rem;
@@ -2259,6 +2259,10 @@ footer.main-footer {
 .linktree-contact:hover {
   color: var(--color-ink);
   border-color: rgba(15, 15, 15, 0.28);
+}
+
+.linktree-cta {
+  font-weight: 700;
 }
 
 .linktree-home {

@@ -29,9 +29,9 @@ export const toolSummaries = {
         caption: "Faceted search across structured fields — not a keyword box.",
       },
       {
-        src: "/images/work/research/catalog-card.png",
-        alt: "Filter sidebar and indexed paper list",
-        caption: "Study-design filters and a sortable, export-ready paper list.",
+        src: "/images/work/research/analysis.png",
+        alt: "My Analyses view with distribution charts across study dimensions",
+        caption: "Analysis dashboard with interactive charts across study dimensions.",
       },
     ],
   },
