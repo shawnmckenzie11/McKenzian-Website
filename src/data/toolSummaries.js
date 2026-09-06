@@ -26,7 +26,7 @@ export const toolSummaries = {
       {
         src: "/images/work/research/catalog.png",
         alt: "Faceted search across a structured PubMed catalog",
-        caption: "Faceted search across structured fields — not a keyword box.",
+        caption: "Faceted search across structured fields, not a keyword box.",
       },
       {
         src: "/images/work/research/analysis.png",
@@ -38,9 +38,9 @@ export const toolSummaries = {
   delivery: {
     title: "Delivery tracker",
     summary:
-      "Operations portal for IAW Courier — digital waybills, proof of delivery, route-based pricing, and dispatcher accounting in a mobile-friendly web app.",
+      "Operations portal for IAW Courier with digital waybills, proof of delivery, route-based pricing, and dispatcher accounting in a mobile-friendly web app.",
     problem:
-      "IAW Courier, a regional operator in Greater Sudbury / Northern Ontario, ran jobs on paper waybills. Destinations were typed from scratch, rates were looked up by hand, and accounting re-keyed every completed job — about $2,000 per year in forms and 25 hours of data entry each month.",
+      "IAW Courier, a regional operator, ran jobs on paper waybills. Destinations were typed from scratch, rates were looked up by hand, and accounting re-keyed every completed job, about $2,000 per year in forms and 25 hours of data entry each month.",
     approach: [
       "Mobile-friendly web app for drivers and a dispatcher portal, backed by Express, Prisma, and PostgreSQL.",
       "Digital waybills at job creation, with pickup chips seeded from historical destinations.",
@@ -55,7 +55,7 @@ export const toolSummaries = {
       {
         src: "/images/work/iaw/04-dispatch.png",
         alt: "Dispatcher board with active jobs and pricing queues",
-        caption: "Dispatcher board — active jobs, pricing, and assignment in one view.",
+        caption: "Dispatcher board with active jobs, pricing, and assignment in one view.",
       },
       {
         src: "/images/work/iaw/03-pickup.png",

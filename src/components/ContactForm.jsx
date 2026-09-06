@@ -145,7 +145,7 @@ export const ContactForm = ({ defaultLane = "" }) => {
           <input
             id="name"
             type="text"
-            placeholder="Jane Doe"
+            placeholder="Your full name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -157,7 +157,7 @@ export const ContactForm = ({ defaultLane = "" }) => {
           <input
             id="organization"
             type="text"
-            placeholder="Lab, courier, or company name"
+            placeholder="Company or organization"
             value={formData.organization}
             onChange={handleChange}
             disabled={loading}
@@ -171,7 +171,7 @@ export const ContactForm = ({ defaultLane = "" }) => {
           <input
             id="email"
             type="email"
-            placeholder="you@organization.com"
+            placeholder="you@company.com"
             value={formData.email}
             onChange={handleChange}
             required
@@ -187,7 +187,7 @@ export const ContactForm = ({ defaultLane = "" }) => {
             disabled={loading}
           >
             <option value="custom-research">Academic Research Catalog</option>
-            <option value="logistics">Ops Portal / Logistics</option>
+            <option value="logistics">Delivery Tracker</option>
             <option value="data-analysis">Data Analysis & Pipelines</option>
           </select>
         </div>
@@ -207,7 +207,7 @@ export const ContactForm = ({ defaultLane = "" }) => {
 
       <div className="form-submit-row">
         <Button type="submit" onClick={handleSubmit} variant="solid" disabled={loading}>
-          {loading ? "Submitting Inquiry..." : "Submit Inquiry"}
+          {loading ? "Submitting..." : "Submit Inquiry or Book Consultation"}
         </Button>
       </div>
     </form>

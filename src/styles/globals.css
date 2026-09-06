@@ -2116,6 +2116,14 @@ footer.main-footer {
   width: 100%;
 }
 
+.contact-stack--dismissible {
+  cursor: pointer;
+}
+
+.contact-stack--dismissible .contact-form-card {
+  cursor: auto;
+}
+
 .contact-flow {
   flex: 1;
   display: flex;
