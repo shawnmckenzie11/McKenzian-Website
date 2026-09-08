@@ -27,6 +27,7 @@ export function getCrmLeads() {
  * @param {string} lead.lane - research | logistics | general
  * @param {string} [lead.service]
  * @param {string} [lead.description]
+ * @param {string} [lead.stage]
  * @param {string} [lead.source]
  * @param {Record<string, string>} [lead.utm]
  * @returns {Record<string, string>} Persisted lead row
@@ -41,6 +42,7 @@ export function appendCrmLead(lead) {
     lane: lead.lane || "general",
     service: lead.service || "",
     description: lead.description || "",
+    project_stage: lead.stage || "",
     source: lead.source || "website",
     stage: "new",
     utm_source: lead.utm?.utm_source || "",
@@ -70,6 +72,7 @@ export function crmLeadsToCsv() {
     "lane",
     "service",
     "description",
+    "project_stage",
     "source",
     "stage",
     "utm_source",
