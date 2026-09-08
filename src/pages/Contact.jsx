@@ -12,8 +12,8 @@ export const Contact = () => {
   const navigate = useNavigate();
 
   useDocumentMetadata(
-    "Build a Project",
-    "Send McKenzian a clear project signal."
+    "Contact",
+    "Send McKenzian a project inquiry."
   );
 
   /**
@@ -41,13 +41,9 @@ export const Contact = () => {
       >
         <section
           className="contact-form-card"
-          aria-labelledby="contact-form-title"
+          aria-label="Project inquiry"
           onClick={handleCardClick}
         >
-          <h1 id="contact-form-title" className="contact-form-card-title">
-            Build a project
-          </h1>
-          <p className="contact-form-card-intro">Point us toward the work. We’ll take it from there.</p>
           <ContactForm />
         </section>
       </div>

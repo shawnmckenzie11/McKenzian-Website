@@ -59,7 +59,7 @@ export const Home = () => {
           McKenzian Solutions
         </Link>
         <a href="#contact" className="systems-contact">
-          Build a project
+          Contact
         </a>
       </header>
 

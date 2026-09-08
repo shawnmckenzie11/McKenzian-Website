@@ -38,7 +38,6 @@ export default {
     const email = String(body.email || "").trim().slice(0, 254);
     const organization = String(body.organization || "").trim().slice(0, 160);
     const service = String(body.service || "").trim().slice(0, 120);
-    const stage = String(body.stage || "").trim().slice(0, 120);
     const description = String(body.description || "").trim().slice(0, 5000);
 
     if (!name || !emailPattern.test(email) || !description) {
@@ -53,7 +52,7 @@ export default {
       },
       body: JSON.stringify({
         from: env.RESEND_FROM_EMAIL || "McKenzian Website <website@mckenzian.com>",
-        to: ["solutions@mckenzian.com"],
+        to: [env.CONTACT_TO_EMAIL || "solutions@mckenzian.com"],
         reply_to: email,
         subject: `Website inquiry from ${name}`,
         html: `<h2>New McKenzian website inquiry</h2>
@@ -61,7 +60,6 @@ export default {
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
           <p><strong>Organization:</strong> ${escapeHtml(organization || "Not provided")}</p>
           <p><strong>Service:</strong> ${escapeHtml(service || "Not specified")}</p>
-          <p><strong>Starting point:</strong> ${escapeHtml(stage || "Not specified")}</p>
           <p><strong>Project description:</strong></p>
           <p>${escapeHtml(description).replaceAll("\n", "<br>")}</p>`,
       }),
