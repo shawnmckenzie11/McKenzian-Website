@@ -14,7 +14,11 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "workers_dev": true,
   "vars": {
     "CONTACT_TO_EMAIL": "solutions@mckenzian.com"
-  }
+  },
+  "routes": [
+    { "pattern": "mckenzian.com", "custom_domain": true }
+  ]
 }
