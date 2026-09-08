@@ -18,7 +18,7 @@ const capabilityDetails = {
     title: "Solutions engineering",
     description: "Build, solve, grow, and integrate—from useful assets and operating systems toward durable scale.",
     metric: "Build → scale",
-    metricLabel: "assets · integration · IPO",
+    metricLabel: "assets · integration",
   },
 };
 
@@ -59,7 +59,7 @@ export const Home = () => {
           McKenzian Solutions
         </Link>
         <a href="#contact" className="systems-contact">
-          Start a project
+          Build a project
         </a>
       </header>
 
@@ -67,7 +67,9 @@ export const Home = () => {
         <p className="systems-overline">McKenzian / Vertical + Lateral</p>
         <h1 id="systems-title">Solutions<br />Engineering.</h1>
         <p className="systems-promise">Build upward. Think sideways. Make complex work clear.</p>
-        <Link to="/nodeweb-lab" className="nodeweb-lab-link">Train nodeWeb <span aria-hidden="true">↗</span></Link>
+        <Link to="/nodeweb-lab" className="nodeweb-lab-link" aria-label="Train nodeWeb, currently locked">
+          Train nodeWeb <span className="nodeweb-lock">locked</span>
+        </Link>
       </section>
 
       <section className="capability-map" aria-label="Capabilities">
@@ -127,8 +129,8 @@ export const Home = () => {
         aria-labelledby="home-contact-title"
       >
         <div className="systems-contact-card">
-          <p className="systems-contact-kicker">Bring the complexity.</p>
-          <h2 id="home-contact-title">Let’s make the next decision clear.</h2>
+          <p className="systems-contact-kicker">Send a project signal.</p>
+          <h2 id="home-contact-title">What should we make clearer?</h2>
           <ContactForm />
         </div>
       </section>
