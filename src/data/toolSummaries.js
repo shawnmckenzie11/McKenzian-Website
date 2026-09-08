@@ -49,7 +49,7 @@ export const toolSummaries = {
       "Separate secure sign-in for drivers (username and PIN) and dispatchers (email and password), each role seeing only the screens and actions they need.",
     ],
     result:
-      "Material spend on forms dropped by about $2,000 per year. Monthly data entry fell from 25 hours to 5. Accounting no longer waits on re-keyed paper, and delivery timing is logged when a job is reviewed.",
+      "Saved $2,000 annually on form materials and reduced monthly data entry by 20 hours",
     liveUrl: "https://iaw.mckenzian.com",
     screenshots: [
       {

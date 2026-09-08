@@ -15,7 +15,7 @@ const capabilityDetails = {
   },
   delivery: {
     kicker: "Vertical / Scale",
-    title: "Solutions Engineering",
+    title: "Workflow Automation",
     description: "Build, solve, grow, and integrate—from useful assets and operating systems toward durable scale.",
     metric: "Build → scale",
     metricLabel: "assets · integration",
