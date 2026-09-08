@@ -2189,25 +2189,6 @@ footer.main-footer {
   transform: translateX(3px);
 }
 
-.nodeweb-lab-link--locked,
-.nodeweb-lab-link--locked:hover {
-  color: rgba(255, 255, 255, 0.55);
-  transform: none;
-  cursor: default;
-}
-
-.systems-check-back {
-  position: relative;
-  z-index: 2;
-  margin: 0 0 2.5rem;
-  padding: 0 1.25rem 1.5rem;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.55);
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-}
-
 .nodeweb-rest {
   position: relative;
   display: grid;
@@ -2249,6 +2230,19 @@ footer.main-footer {
   color: rgba(255, 255, 255, 0.56);
   font-family: var(--font-data);
   font-size: clamp(0.82rem, 2vw, 1rem);
+}
+
+.nodeweb-rest-soon {
+  position: absolute;
+  right: 0;
+  bottom: 1.75rem;
+  left: 0;
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
 }
 
 .nodeweb-rest-point {

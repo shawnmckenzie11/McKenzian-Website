@@ -67,9 +67,9 @@ export const Home = () => {
         <p className="systems-overline">McKenzian / Vertical + Lateral</p>
         <h1 id="systems-title">Solutions<br />Engineering.</h1>
         <p className="systems-promise">Build upward. Think sideways. Make complex work clear.</p>
-        <span className="nodeweb-lab-link nodeweb-lab-link--locked" aria-disabled="true">
+        <Link to="/nodeweb-lab" className="nodeweb-lab-link">
           Train nodeWeb
-        </span>
+        </Link>
       </section>
 
       <section className="capability-map" aria-label="Capabilities">
@@ -134,7 +134,6 @@ export const Home = () => {
           <ContactForm />
         </div>
       </section>
-      <p className="systems-check-back">Check back soon.</p>
     </main>
   );
 };

@@ -15,6 +15,7 @@ export const NodeWebLab = () => {
         <h1 id="nodeweb-rest-title">nodeWeb is resting.</h1>
         <p>Comfortably positioned on the imaginary axis.</p>
       </section>
+      <p className="nodeweb-rest-soon">Check back soon.</p>
     </main>
   );
 };
