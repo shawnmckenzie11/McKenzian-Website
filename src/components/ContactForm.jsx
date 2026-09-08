@@ -94,16 +94,15 @@ export const ContactForm = ({ defaultLane = "" }) => {
         source: utm.utm_source || "website",
       });
 
-      // Optional webhook (Formspree / Worker) when configured
-      const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
-      if (endpoint) {
-        await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ ...formData, utm }),
-        });
-      } else {
-        await new Promise((resolve) => setTimeout(resolve, 600));
+      const endpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT || "/api/contact";
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ ...formData, utm }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact delivery failed");
       }
 
       setStatus({
@@ -184,7 +183,7 @@ export const ContactForm = ({ defaultLane = "" }) => {
             disabled={loading}
           >
             <option value="custom-research">Academic Research Catalog</option>
-            <option value="logistics">Delivery Tracker</option>
+            <option value="logistics">Delivery Tracking</option>
             <option value="data-analysis">Data Analysis & Pipelines</option>
           </select>
         </div>

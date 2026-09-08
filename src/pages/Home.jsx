@@ -1,62 +1,137 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDocumentMetadata } from "../hooks/useDocumentMetadata";
 import { HeroAnimation } from "../components/HeroAnimation";
+import { ContactForm } from "../components/ContactForm";
 import { tools } from "../data/tools";
 
-/** Display width for screenshot thumbnails; height matches delivery aspect ratio. */
-const CARD_THUMB_WIDTH = 100;
-const CARD_THUMB_HEIGHT = Math.round(CARD_THUMB_WIDTH * (698 / 460));
+const capabilityDetails = {
+  research: {
+    kicker: "Lateral / Practice",
+    title: "Teaching systems",
+    description: "Mathematics and computer science taught as living systems: notice structure, test ideas, and build what you claim to understand.",
+    metric: "Teach ↔ build",
+    metricLabel: "practice what you preach",
+  },
+  delivery: {
+    kicker: "Vertical / Scale",
+    title: "Solutions engineering",
+    description: "Build, solve, grow, and integrate—from useful assets and operating systems toward durable scale.",
+    metric: "Build → scale",
+    metricLabel: "assets · integration · IPO",
+  },
+};
 
 /**
  * Full-viewport link tree: thumbnail opens More page; More opens live tool.
  */
 export const Home = () => {
+  const [activeCapability, setActiveCapability] = useState(null);
+  const [contactVisible, setContactVisible] = useState(false);
+  const contactRef = useRef(null);
+
+  useEffect(() => {
+    const section = contactRef.current;
+    if (!section) return undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => setContactVisible(entry.isIntersecting),
+      { threshold: 0.18 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   useDocumentMetadata(
     "",
-    "Academic Research and Delivery tracker."
+    "Research and operations systems that turn complex work into clear decisions."
   );
 
   return (
-    <main id="main-content" className="linktree-page">
-      <HeroAnimation />
-      <div className="linktree-cluster">
-        <span className="linktree-brand">McKenzian Solutions</span>
-        <div className="linktree-row">
-          {tools.map((tool) => (
-            <div key={tool.id} className="linktree-item">
-              <Link
-                to={`/more/${tool.id}`}
-                className={`linktree-card${tool.cardClass ? ` ${tool.cardClass}` : ""}`}
-                aria-label={`More about ${tool.title}`}
-                style={{
-                  "--card-w": tool.nativeWidth,
-                  "--card-h": tool.nativeHeight,
-                }}
-              >
-                <img
-                  src={tool.image}
-                  alt=""
-                  width={CARD_THUMB_WIDTH}
-                  height={CARD_THUMB_HEIGHT}
-                />
-              </Link>
-              <a
-                className="linktree-more"
-                href={tool.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${tool.title}`}
-              >
-                More
-              </a>
-            </div>
-          ))}
-        </div>
-        <Link to="/contact" className="linktree-contact linktree-cta">
-          Get Started
+    <main
+      id="main-content"
+      className="systems-page"
+      data-active-capability={activeCapability || "none"}
+    >
+      <HeroAnimation activeNode={activeCapability} />
+
+      <header className="systems-header">
+        <Link to="/" className="systems-brand" aria-label="McKenzian Solutions home">
+          McKenzian Solutions
         </Link>
-      </div>
+        <a href="#contact" className="systems-contact">
+          Start a project
+        </a>
+      </header>
+
+      <section className="systems-intro" aria-labelledby="systems-title">
+        <p className="systems-overline">McKenzian / Vertical + Lateral</p>
+        <h1 id="systems-title">Solutions<br />Engineering.</h1>
+        <p className="systems-promise">Build upward. Think sideways. Make complex work clear.</p>
+        <Link to="/nodeweb-lab" className="nodeweb-lab-link">Train nodeWeb <span aria-hidden="true">↗</span></Link>
+      </section>
+
+      <section className="capability-map" aria-label="Capabilities">
+        <span className="capability-map-line" aria-hidden="true" />
+        {tools.map((tool) => {
+          const detail = capabilityDetails[tool.id];
+          return (
+            <article
+              key={tool.id}
+              className={`capability-node capability-node--${tool.id}`}
+              onMouseEnter={() => setActiveCapability(tool.id)}
+              onMouseLeave={() => setActiveCapability(null)}
+              onFocus={() => setActiveCapability(tool.id)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setActiveCapability(null);
+                }
+              }}
+            >
+              <Link to={`/more/${tool.id}`} className="capability-node-main">
+                <span className="capability-kicker">{detail.kicker}</span>
+                <span className="capability-title">{detail.title}</span>
+                <span className="capability-description">{detail.description}</span>
+                <span className="capability-metric">
+                  <strong>{detail.metric}</strong>
+                  <span>{detail.metricLabel}</span>
+                </span>
+                <span className="capability-action">See a working system <span aria-hidden="true">↗</span></span>
+              </Link>
+              <div className="capability-preview" aria-hidden="true">
+                <span className="capability-preview-label">
+                  <span /> Live workflow
+                </span>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster={tool.image}
+                  tabIndex="-1"
+                >
+                  <source src={`${tool.previewVideo}.webm`} type="video/webm" />
+                  <source src={`${tool.previewVideo}.mp4`} type="video/mp4" />
+                </video>
+                <img className="capability-preview-fallback" src={tool.image} alt="" width={tool.nativeWidth} height={tool.nativeHeight} />
+              </div>
+            </article>
+          );
+        })}
+      </section>
+
+      <section
+        id="contact"
+        ref={contactRef}
+        className={`systems-contact-section${contactVisible ? " is-visible" : ""}`}
+        aria-labelledby="home-contact-title"
+      >
+        <div className="systems-contact-card">
+          <p className="systems-contact-kicker">Bring the complexity.</p>
+          <h2 id="home-contact-title">Let’s make the next decision clear.</h2>
+          <ContactForm />
+        </div>
+      </section>
     </main>
   );
 };

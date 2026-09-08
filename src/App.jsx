@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, Navigate, useLocation } from "reac
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
 import { ToolMore } from "./pages/ToolMore";
+import { NodeWebLab } from "./pages/NodeWebLab";
 import { MARKETING } from "./config/marketing";
 
 import "./styles/globals.css";
@@ -43,6 +44,7 @@ const AppChrome = () => {
         <Route path="/" element={<Home />} />
         <Route path="/more/:id" element={<ToolMore />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/nodeweb-lab" element={<NodeWebLab />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

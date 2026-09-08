@@ -22,7 +22,7 @@ export const ToolMore = () => {
 
   return (
     <main id="main-content" className="linktree-page linktree-page--more">
-      <HeroAnimation />
+      <HeroAnimation mode={id} />
       <div className="more-stack">
         <Link to="/" className="linktree-contact">
           Back

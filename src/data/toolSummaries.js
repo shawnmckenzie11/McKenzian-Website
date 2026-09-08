@@ -36,7 +36,7 @@ export const toolSummaries = {
     ],
   },
   delivery: {
-    title: "Delivery tracker",
+    title: "Delivery Tracking",
     summary:
       "Operations portal for IAW Courier with digital waybills, proof of delivery, route-based pricing, and dispatcher accounting in a mobile-friendly web app.",
     problem:
