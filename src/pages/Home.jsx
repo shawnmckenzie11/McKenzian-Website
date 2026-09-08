@@ -7,15 +7,15 @@ import { tools } from "../data/tools";
 
 const capabilityDetails = {
   research: {
-    kicker: "Lateral / Practice",
-    title: "Teaching systems",
-    description: "Mathematics and computer science taught as living systems: notice structure, test ideas, and build what you claim to understand.",
+    kicker: "Lateral / Explore",
+    title: "Teaching & Research",
+    description: "Logic and automation for reinforcing learning pathways and concept synthesis",
     metric: "Teach ↔ build",
-    metricLabel: "practice what you preach",
+    metricLabel: "model · demonstrate",
   },
   delivery: {
     kicker: "Vertical / Scale",
-    title: "Solutions engineering",
+    title: "Solutions Engineering",
     description: "Build, solve, grow, and integrate—from useful assets and operating systems toward durable scale.",
     metric: "Build → scale",
     metricLabel: "assets · integration",
@@ -64,7 +64,7 @@ export const Home = () => {
       </header>
 
       <section className="systems-intro" aria-labelledby="systems-title">
-        <p className="systems-overline">McKenzian / Vertical + Lateral</p>
+        <p className="systems-overline">Vertical + Lateral</p>
         <h1 id="systems-title">Solutions<br />Engineering.</h1>
         <p className="systems-promise">Build upward. Think sideways. Make complex work clear.</p>
         <Link to="/nodeweb-lab" className="nodeweb-lab-link">
