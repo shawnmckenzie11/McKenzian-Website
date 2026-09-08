@@ -134,8 +134,8 @@ export const ContactForm = ({ defaultLane = "" }) => {
         <input id="organization" type="text" autoComplete="organization" value={formData.organization} onChange={handleChange} disabled={loading} />
       </div>
       <div className="form-group">
-        <label htmlFor="description">What’s the one thing you want clearer or working?</label>
-        <textarea id="description" placeholder="A sentence or two is enough." value={formData.description} onChange={handleChange} required disabled={loading} />
+        <label htmlFor="description">Tell us about your project:</label>
+        <textarea id="description" value={formData.description} onChange={handleChange} required disabled={loading} />
       </div>
       <div className="form-submit-row signal-submit">
         <Button type="submit" variant="solid" disabled={loading}>
