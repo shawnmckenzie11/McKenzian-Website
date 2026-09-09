@@ -1,5 +1,7 @@
 /**
- * Explainer / justification copy and capability screenshots for each More page.
+ * Explainer / justification copy and stills for each More page.
+ * Walkthrough video sources live on the matching tool in `tools.js`
+ * (`/videos/{id}-preview`); the first screenshot is used as the video poster.
  * @typedef {{ src: string, alt: string, caption: string }} ToolScreenshot
  * @typedef {{ title: string, summary: string, problem: string, approach: string[], result: string, liveUrl: string, screenshots: ToolScreenshot[] }} ToolSummary
  */
