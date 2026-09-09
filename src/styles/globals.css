@@ -3122,18 +3122,89 @@ footer.main-footer {
   text-decoration: underline;
 }
 
-.more-screenshots {
+.more-walkthrough {
+  margin: 0 0 1.25rem;
+}
+
+.more-walkthrough-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--color-rule);
+  background: #090b10;
+}
+
+.more-walkthrough video,
+.more-walkthrough-fallback {
+  width: 100%;
+  height: auto;
+  max-height: min(42vh, 420px);
+  display: block;
+  object-fit: contain;
+  object-position: top center;
+  background: #090b10;
+}
+
+.more-walkthrough-fallback {
+  display: none;
+}
+
+.more-walkthrough-label {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(5, 7, 11, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-family: var(--font-data);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.more-walkthrough-label span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.more-walkthrough figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.more-screenshots,
+.more-stills {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.more-screenshot {
+.more-stills {
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.more-screenshot,
+.more-still {
   margin: 0;
 }
 
-.more-screenshot img {
+.more-screenshot img,
+.more-still img {
   width: 100%;
   height: auto;
   display: block;
@@ -3142,16 +3213,34 @@ footer.main-footer {
   background: var(--color-surface);
 }
 
-.more-screenshot figcaption {
+.more-screenshot figcaption,
+.more-still figcaption {
   margin-top: 0.45rem;
   font-size: 0.75rem;
   line-height: 1.4;
   color: var(--color-muted);
 }
 
+.more-still img {
+  max-height: 88px;
+  object-fit: cover;
+  object-position: top center;
+}
+
 @media (max-width: 640px) {
-  .more-screenshots {
+  .more-screenshots,
+  .more-stills {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .more-walkthrough video {
+    display: none;
+  }
+
+  .more-walkthrough-fallback {
+    display: block;
   }
 }
 
