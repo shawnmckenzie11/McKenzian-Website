@@ -9,18 +9,18 @@ export const toolSummaries = {
   research: {
     title: "Academic Research",
     summary:
-      "Production PubMed literature catalog with structured classification, faceted search, and review loops that keep extraction quality measurable.",
+      "PubMed catalog with structured classification, faceted search, and review loops that keep extraction quality measurable.",
     problem:
-      "A biomedical research consortium needed a single, auditable catalog for an expanding PubMed corpus. Literature reviews were assembled from scattered exports, study characteristics were extracted by hand, and there were no quality gates on metadata. At scale, duplicate effort accumulated and report cycles stretched to a full working day.",
+      "A biomedical research consortium assembled literature reviews from scattered PubMed exports. Study characteristics were extracted by hand, with no quality gates on metadata, and report cycles stretched to a full working day.",
     approach: [
-      "Automated PubMed harvest pipeline with relevance gating and tiered extraction for clinical, in vivo, and in vitro records.",
+      "PubMed harvest pipeline with relevance gating and tiered extraction for clinical, in vivo, and in vitro records.",
       "Hybrid deterministic classifier with LLM and PDF-tier fallback; uncertain papers route to an expert review queue.",
-      "One searchable library with locked expert fields and a clear audit trail so teams trust what they cite and export.",
-      "Continuous quality review between batches so classification improves without silent drift.",
-      "Faceted search dashboard for study design, species, outcome domain, and structured extraction fields.",
+      "One searchable library with locked expert fields and an audit trail.",
+      "Quality review between batches so classification improves without silent drift.",
+      "Faceted search for study design, species, outcome domain, and structured extraction fields.",
     ],
     result:
-      "21,000+ papers indexed in production with 90.0–100.0% batch alignment (mean 92.2%) against expert-validated holdouts. Literature compilation cycles fell from 12 hours to under 90 minutes. Studies can be planned and evaluated far more intentionally, cross-referenced quickly, and shared across collaborators to advance work with less duplicate effort.",
+      "Indexed 21,000+ papers with 92.2% mean holdout alignment and cut review cycles from 12 hours to under 90 minutes",
     liveUrl: "https://paperscraper.mckenzian.com",
     screenshots: [
       {
@@ -31,22 +31,22 @@ export const toolSummaries = {
       {
         src: "/images/work/research/analysis.png",
         alt: "My Analyses view with distribution charts across study dimensions",
-        caption: "Analysis dashboard with interactive charts across study dimensions.",
+        caption: "Analysis dashboard with charts across study dimensions.",
       },
     ],
   },
   delivery: {
     title: "Delivery Tracking",
     summary:
-      "Operations portal for IAW Courier with digital waybills, proof of delivery, route-based pricing, and dispatcher accounting in a mobile-friendly web app.",
+      "IAW Courier operations portal with digital waybills, proof of delivery, route-based pricing, and dispatcher accounting.",
     problem:
-      "IAW Courier, a regional operator, ran jobs on paper waybills. Destinations were typed from scratch, rates were looked up by hand, and accounting re-keyed every completed job, about $2,000 per year in forms and 25 hours of data entry each month.",
+      "IAW Courier ran jobs on paper waybills. Destinations were typed from scratch, rates looked up by hand, and accounting re-keyed every job — $2,000 a year in forms and 25 hours of data entry each month.",
     approach: [
-      "Mobile-friendly web app for drivers and a dispatcher portal, backed by Express, Prisma, and PostgreSQL.",
+      "Driver web app and dispatcher portal, backed by Express, Prisma, and PostgreSQL.",
       "Digital waybills at job creation, with pickup chips seeded from historical destinations.",
       "Route rates encoded in the database; unmatched jobs land in a Pending Price queue for dispatcher quote.",
-      "Pickup, transit, and proof-of-delivery captured as a timestamped event history for accounting and delivery-time review.",
-      "Separate secure sign-in for drivers (username and PIN) and dispatchers (email and password), each role seeing only the screens and actions they need.",
+      "Timestamped pickup, transit, and proof-of-delivery events for accounting and delivery-time review.",
+      "Driver sign-in with username and PIN; dispatcher sign-in with email and password. Each role sees only its screens.",
     ],
     result:
       "Saved $2,000 annually on form materials and reduced monthly data entry by 20 hours",
